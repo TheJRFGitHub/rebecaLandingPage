@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for Dark Mode */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #1a73e8; /* Primary color */
+  --secondary: #fbbc05; /* Secondary color */
+  --accent: #34d399; /* Accent color */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: #2563eb; /* Adjusted for dark mode */
+    --secondary: #facc15; /* Adjusted for dark mode */
+    --accent: #22c55e; /* Adjusted for dark mode */
+  }
+}
+
+/* Global Styles */
+body {
+  @apply font-sans text-foreground bg-background; /* Tailwind utilities for consistency */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Utility Classes for Headings */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold text-foreground;
+  margin: 0;
+}
+
+/* Links */
+a {
+  @apply text-primary underline;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  @apply text-accent; /* Accent color on hover */
+}
+
+/* Container Utility */
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+/* Buttons */
+button {
+  @apply bg-primary text-white font-medium py-2 px-4 rounded hover:bg-accent transition;
+}
+
+/* Default Reset for List Styles */
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Swiper Customization */
+.swiper-container {
+  @apply bg-transparent border-none p-0 m-0;
+}
+
+.swiper-slide {
+  @apply shadow-none border-none;
+}
+
+.swiper-pagination {
+  @apply p-0 m-0;
+}
+
+.swiper-pagination-bullet {
+  @apply bg-secondary opacity-75;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-accent;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-primary hover:text-accent;
+}
+
+/* Forms */
+input, select, textarea {
+  @apply border border-gray-300 rounded px-3 py-2 w-full;
+}
+
+input:focus, select:focus, textarea:focus {
+  @apply outline-none border-primary ring-1 ring-primary;
+}
