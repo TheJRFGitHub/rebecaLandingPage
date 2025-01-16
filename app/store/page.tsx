@@ -3,15 +3,13 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export default function Store() {
-  const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
-  useEffect(() => {
-    const categoryFromParams = searchParams.get("category") || "all";
-    setSelectedCategory(categoryFromParams);
-  }, [searchParams]);
+  const searchParams = useSearchParams();
 
   const products = [
     { id: 1, name: "Kenko Air", price: "$10.00", image: "/images/product1.jpg", category: "air" },
@@ -21,6 +19,13 @@ export default function Store() {
 
   const categories = ["all", "air", "water", "repuestos"];
 
+  // Set the category based on the query parameter
+  useEffect(() => {
+    const category = searchParams.get("category") || "all";
+    setSelectedCategory(category);
+  }, [searchParams]);
+
+  // Filtered products based on search term and selected category
   const filteredProducts = products.filter(
     (product) =>
       (selectedCategory === "all" || product.category === selectedCategory) &&
@@ -30,6 +35,7 @@ export default function Store() {
   return (
     <div className="container mx-auto py-8">
       <div className="flex flex-col lg:flex-row gap-8">
+        {/* Sidebar Filters */}
         <aside className="w-full lg:w-1/4">
           <h2 className="text-xl font-bold mb-4">Categorías</h2>
           <ul className="space-y-2">
@@ -50,7 +56,9 @@ export default function Store() {
           </ul>
         </aside>
 
+        {/* Main Content */}
         <div className="flex-1">
+          {/* Search Bar */}
           <input
             type="text"
             placeholder="Buscar productos..."
@@ -59,11 +67,19 @@ export default function Store() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
 
+          {/* Product Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
-                <div key={product.id} className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
-                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+                <div
+                  key={product.id}
+                  className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition"
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-48 object-cover"
+                  />
                   <div className="p-4">
                     <h2 className="text-xl font-bold">{product.name}</h2>
                     <p className="text-gray-700">{product.price}</p>
