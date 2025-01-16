@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
-export const dynamic = "force-dynamic";
-
 export default function Store() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -33,7 +31,6 @@ export default function Store() {
   return (
     <div className="container mx-auto py-8">
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Sidebar Filters */}
         <aside className="w-full lg:w-1/4">
           <h2 className="text-xl font-bold mb-4">Categorías</h2>
           <ul className="space-y-2">
@@ -54,7 +51,6 @@ export default function Store() {
           </ul>
         </aside>
 
-        {/* Main Content */}
         <div className="flex-1">
           <input
             type="text"
