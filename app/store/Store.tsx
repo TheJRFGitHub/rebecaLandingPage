@@ -11,7 +11,7 @@ export default function Store() {
 
   const products = [
     { id: 1, name: "Kenko Air", price: "$10.00", image: "/images/product1.jpg", category: "air" },
-    { id: 2, name: "Rodillo Nikken", price: "$20.00", image: "/images/product2.jpg", category: "repuestos" },
+    { id: 2, name: "Repuesto Nikken", price: "$20.00", image: "/images/product2.jpg", category: "repuestos" },
     { id: 3, name: "Filtro de Agua", price: "$30.00", image: "/images/product3.jpg", category: "water" },
   ];
 
