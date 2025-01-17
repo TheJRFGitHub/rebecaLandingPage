@@ -3,28 +3,27 @@
 import { useState, useEffect } from "react";
 
 export default function Testimonials() {
-    const testimonials = [
-        {
-          id: 1,
-          quote: "Este producto cambió completamente mi vida. ¡Nunca me he sentido mejor! &quot;",
-          author: "Testigo 1",
-        },
-        {
-          id: 2,
-          quote: "Las soluciones de Nikken son un cambio total para el bienestar. Altamente recomendado. &quot;",
-          author: "Testigo 2",
-        },
-        {
-          id: 3,
-          quote: "La mejor inversión que he hecho para mi salud. ¡Calidad excepcional! &quot;",
-          author: "Testigo 3",
-        },
-      ];
-      
+  const testimonials = [
+    {
+      id: 1,
+      quote: `Este producto cambió completamente mi vida. ¡Nunca me he sentido mejor!`,
+      author: "Testigo 1",
+    },
+    {
+      id: 2,
+      quote: `Las soluciones de Nikken son un cambio total para el bienestar. Altamente recomendado.`,
+      author: "Testigo 2",
+    },
+    {
+      id: 3,
+      quote: `La mejor inversión que he hecho para mi salud. ¡Calidad excepcional!`,
+      author: "Testigo 3",
+    },
+  ];
 
   const [current, setCurrent] = useState(0);
 
-  // Automatically transition slides every 50 seconds
+  // Automatically transition slides every 20 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % testimonials.length);
@@ -33,12 +32,11 @@ export default function Testimonials() {
   }, [testimonials.length]);
 
   return (
-    <div className="container mx-auto py-20 text-center"> {/* Added py-12 for extra spacing */}
+    <div className="container mx-auto py-20 text-center"> {/* Added py-20 for extra spacing */}
       {/* Header Section */}
       <div className="bg-purple-100 rounded-lg p-16 mb-20"> {/* Increased padding and margin */}
-        
         <blockquote className="text-lg md:text-xl font-medium italic text-gray-800">
-          "{testimonials[current].quote}"
+          &quot;{testimonials[current].quote}&quot;
         </blockquote>
         <p className="mt-6 text-gray-600 font-semibold">
           {testimonials[current].author}
