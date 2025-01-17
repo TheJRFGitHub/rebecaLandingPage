@@ -3,26 +3,24 @@
 import { useState, useEffect } from "react";
 
 export default function Testimonials() {
-  const testimonials = [
-    {
-      id: 1,
-      quote:
-        "Este producto cambió completamente mi vida. ¡Nunca me he sentido mejor!",
-      author: "Testigo 1",
-    },
-    {
-      id: 2,
-      quote:
-        "Las soluciones de Nikken son un cambio total para el bienestar. Altamente recomendado.",
-      author: "Testigo 2",
-    },
-    {
-      id: 3,
-      quote:
-        "La mejor inversión que he hecho para mi salud. ¡Calidad excepcional!",
-      author: "Testigo 3",
-    },
-  ];
+    const testimonials = [
+        {
+          id: 1,
+          quote: "Este producto cambió completamente mi vida. ¡Nunca me he sentido mejor!",
+          author: "Testigo 1",
+        },
+        {
+          id: 2,
+          quote: "Las soluciones de Nikken son un cambio total para el bienestar. Altamente recomendado.",
+          author: "Testigo 2",
+        },
+        {
+          id: 3,
+          quote: "La mejor inversión que he hecho para mi salud. ¡Calidad excepcional!",
+          author: "Testigo 3",
+        },
+      ];
+      
 
   const [current, setCurrent] = useState(0);
 
