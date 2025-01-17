@@ -11,13 +11,13 @@ export default function Header() {
 
   return (
     <header className="bg-primary text-white shadow-md">
-      <div className="container flex flex-wrap items-center justify-between py-4">
+      <div className="container flex flex-wrap items-center justify-between py-4 relative">
         {/* Logo */}
         <h1 className="text-2xl font-bold">Rebeca Zaballa</h1>
 
         {/* Hamburger Menu (Mobile) */}
         <button
-          className="md:hidden text-secondary focus:outline-none"
+          className="md:hidden text-secondary focus:outline-none fixed top-4 right-4 z-50"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <svg
@@ -39,12 +39,18 @@ export default function Header() {
         {/* Navigation */}
         <nav
           className={`${
-            isMenuOpen ? "block" : "hidden"
+            isMenuOpen
+              ? "fixed inset-0 bg-primary text-white flex flex-col items-center justify-center z-40"
+              : "hidden"
           } md:block w-full md:w-auto`}
         >
-          <ul className="flex flex-col md:flex-row items-center md:space-x-6 space-y-2 md:space-y-0">
+          <ul className="flex flex-col md:flex-row items-center md:space-x-6 space-y-4 md:space-y-0">
             <li>
-              <Link href="/" className="text-secondary font-medium hover:text-accent transition">
+              <Link
+                href="/"
+                className="text-secondary font-medium hover:text-accent transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Home
               </Link>
             </li>
@@ -55,7 +61,11 @@ export default function Header() {
               onMouseLeave={() => setIsDropdownOpen(false)}
             >
               <div className="text-secondary font-medium hover:text-accent transition cursor-pointer">
-                <Link href="/store" className="text-secondary font-medium hover:text-accent transition">
+                <Link
+                  href="/store"
+                  className="text-secondary font-medium hover:text-accent transition"
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   Store
                 </Link>
               </div>
@@ -67,6 +77,7 @@ export default function Header() {
                         <Link
                           href={`/store?category=${category.toLowerCase()}`}
                           className="block px-4 py-2 hover:bg-primary hover:text-white transition"
+                          onClick={() => setIsMenuOpen(false)}
                         >
                           {category}
                         </Link>
@@ -77,12 +88,20 @@ export default function Header() {
               )}
             </li>
             <li>
-              <Link href="/join" className="text-secondary font-medium hover:text-accent transition">
+              <Link
+                href="/join"
+                className="text-secondary font-medium hover:text-accent transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Join
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="text-secondary font-medium hover:text-accent transition">
+              <Link
+                href="/blog"
+                className="text-secondary font-medium hover:text-accent transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Blog
               </Link>
             </li>
@@ -90,6 +109,7 @@ export default function Header() {
               <Link
                 href="/testimonials"
                 className="text-secondary font-medium hover:text-accent transition"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Testimonials
               </Link>
