@@ -27,7 +27,7 @@ const slides = [
 export default function Home() {
   return (
     <div className="text-center">
-      <div className="relative mx-auto max-w-2xl">
+      <div className="relative mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%]">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           navigation
@@ -39,15 +39,15 @@ export default function Home() {
           {slides.map((slide) => (
             <SwiperSlide key={slide.id}>
               <div className="relative">
-                {/* Image with no borders or shadows */}
+                {/* Image with responsive scaling */}
                 <img
                   src={slide.image}
                   alt={slide.text}
-                  className="w-full h-auto object-cover border-none shadow-none"
+                  className="w-full h-full object-cover"
                 />
                 {/* Overlay text */}
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                  <h2 className="text-white text-2xl md:text-4xl font-bold">
+                  <h2 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
                     {slide.text}
                   </h2>
                 </div>
