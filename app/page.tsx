@@ -15,29 +15,26 @@ const slides = [
 export default function Home() {
   return (
     <div className="text-center">
-      {/* Carousel Wrapper */}
-      <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] mx-auto">
+      <div className="relative mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%]">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           navigation
           pagination={{ clickable: true }}
-          autoplay={{ delay: 4000 }}
+          autoplay={{ delay: 3000 }}
           loop={true}
           className="swiper-container"
         >
           {slides.map((slide) => (
             <SwiperSlide key={slide.id}>
-              <div className="relative w-full h-full">
-                {/* Responsive Image */}
+              <div className="relative">
                 <img
                   src={slide.image}
                   alt={slide.text}
                   className="w-full h-full object-cover"
-                  loading="lazy"
+                  loading="lazy" /* Lazy loading for performance */
                 />
-                {/* Overlay with Text */}
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                  <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                  <h2 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
                     {slide.text}
                   </h2>
                 </div>
