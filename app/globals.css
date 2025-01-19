@@ -102,6 +102,19 @@ img {
     /* Ensures cross-browser consistency */
     @apply w-full max-w-screen-lg mx-auto;
   }
+
+  .swiper-slide img {
+    @apply w-full h-auto object-cover; /* Ensure images render correctly on Chrome/Safari */
+    transform: translate3d(0, 0, 0); /* Prevent flickering */
+    -webkit-transform: translate3d(0, 0, 0); /* Safari fix */
+  }
+}
+
+/* Additional Swiper Fixes for Edge Cases */
+@media (max-width: 768px) {
+  .swiper-container {
+    @apply max-w-full;
+  }
 }
 
 /* Forms */
@@ -142,4 +155,9 @@ footer p, footer h3 {
   footer p {
     @apply text-sm;
   }
+}
+
+/* Debugging Overflow Issues */
+html, body {
+  overflow-x: hidden; /* Prevent potential overflow issues on smaller viewports */
 }
