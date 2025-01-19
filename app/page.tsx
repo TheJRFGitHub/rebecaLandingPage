@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -13,9 +14,22 @@ const slides = [
 ];
 
 export default function Home() {
+  const [isChrome, setIsChrome] = useState(false);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.includes("chrome") && !userAgent.includes("edge")) {
+      setIsChrome(true);
+    }
+  }, []);
+
   return (
     <div className="text-center">
-      <div className="relative mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%]">
+      <div
+        className={`relative mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%] ${
+          isChrome ? "chrome-specific-class" : ""
+        }`}
+      >
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           navigation

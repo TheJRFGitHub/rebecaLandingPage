@@ -107,6 +107,7 @@ img {
     @apply w-full h-auto object-cover; /* Ensure images render correctly on Chrome/Safari */
     transform: translate3d(0, 0, 0); /* Prevent flickering */
     -webkit-transform: translate3d(0, 0, 0); /* Safari fix */
+    backface-visibility: hidden; /* Chrome/Safari rendering improvement */
   }
 }
 
@@ -115,6 +116,11 @@ img {
   .swiper-container {
     @apply max-w-full;
   }
+}
+
+/* Debugging Overflow Issues */
+html, body {
+  overflow-x: hidden; /* Prevent potential overflow issues on smaller viewports */
 }
 
 /* Forms */
@@ -157,7 +163,17 @@ footer p, footer h3 {
   }
 }
 
-/* Debugging Overflow Issues */
-html, body {
-  overflow-x: hidden; /* Prevent potential overflow issues on smaller viewports */
+/* Chrome-Specific Fixes for Carousel and Layout */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  /* Specific to Chrome */
+  .swiper-container {
+    @apply w-full max-w-screen-lg mx-auto;
+  }
+
+  .swiper-slide img {
+    @apply w-full h-auto object-cover; /* Chrome-specific adjustments */
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    backface-visibility: hidden; /* Smooth rendering */
+  }
 }
