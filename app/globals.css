@@ -27,6 +27,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scrolling issues */
 }
 
 /* Utility Classes for Headings */
@@ -95,6 +96,14 @@ img {
   @apply text-primary hover:text-accent;
 }
 
+/* Fixes for Swiper Compatibility */
+@supports (-webkit-appearance: none) {
+  .swiper-container {
+    /* Ensures cross-browser consistency */
+    @apply w-full max-w-screen-lg mx-auto;
+  }
+}
+
 /* Forms */
 input, select, textarea {
   @apply border border-gray-300 rounded px-3 py-2 w-full;
@@ -102,4 +111,35 @@ input, select, textarea {
 
 input:focus, select:focus, textarea:focus {
   @apply outline-none border-primary ring-1 ring-primary;
+}
+
+/* Footer Customization for Mobile */
+footer {
+  @apply bg-gray-900 text-white py-6;
+}
+
+footer .container {
+  @apply flex flex-col md:flex-row justify-between items-center gap-4;
+}
+
+footer p, footer h3 {
+  @apply text-sm md:text-base;
+}
+
+@media (max-width: 768px) {
+  footer {
+    @apply py-4;
+  }
+
+  footer .container {
+    @apply flex-col text-center;
+  }
+
+  footer h3 {
+    @apply text-base font-medium;
+  }
+
+  footer p {
+    @apply text-sm;
+  }
 }
